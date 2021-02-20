@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QHBoxLayout, QGroupBox, QGridLayout, QLabel, QLineEdit, QVBoxLayout
+from .dialogo_nueva_materia import Dialogo_nueva_materia
 
 class Aplicacion_Gui(QWidget):
 
@@ -82,11 +83,14 @@ class Aplicacion_Gui(QWidget):
         self.boton_retroceder.clicked.connect(self.retroceder_materia)
         self.boton_avanzar = QPushButton(">>")
         self.boton_avanzar.clicked.connect(self.avanzar_materia)
+        self.boton_nueva_materia = QPushButton("Nueva Materia")
+        self.boton_nueva_materia.clicked.connect(self.dialogo_nueva_materia)
 
         #Agregamos los botones a la caja de botones
         distr_caja_botones.addWidget(self.boton_retroceder)
         distr_caja_botones.addWidget(self.boton_avanzar)
-       
+        distr_caja_botones.addWidget(self.boton_nueva_materia)
+
 
         #Agregamos las cajas a nuestra aplicación
         self.distr_vertical.addWidget(self.caja_materias)
@@ -97,3 +101,8 @@ class Aplicacion_Gui(QWidget):
 
         #Hacemos la ventana visible
         self.show()
+
+    def dialogo_nueva_materia(self):
+        dialogo = Dialogo_nueva_materia()     
+        if dialogo.exec_():
+            self.logica.aniadir_materia(dialogo.dar_valores())

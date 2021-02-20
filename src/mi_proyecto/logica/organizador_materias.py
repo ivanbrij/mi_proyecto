@@ -18,3 +18,6 @@ class Organizador_Materias():
     def retroceder(self):
         self.actual -= 1
         self.actual = self.actual % len(self.lista_materias)
+
+    def aniadir_materia(self, nueva_materia):
+        self.lista_materias.append(nueva_materia)
