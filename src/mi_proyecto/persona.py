@@ -1,5 +1,6 @@
 import sys
 import datetime
+import numpy
 
 class Persona:
 
